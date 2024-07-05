@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.coreis.game.pantallas.Splash_Screen;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -16,8 +17,13 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		this.setScreen(new Splash_Screen());
+		img = new Texture("logoJ.png");
 	}
+	private void setScreen(Splash_Screen splash_Screen) {
+		
+	}
+
 
 	@Override
 	public void render () {
