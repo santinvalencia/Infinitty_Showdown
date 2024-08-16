@@ -1,5 +1,5 @@
 package com.coreis.game;
-
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -8,8 +8,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.coreis.game.pantallas.Splash_Screen;
+import com.coreis.game.utiles.Render;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.utils.Timer; 	
 
-public class MyGdxGame extends ApplicationAdapter {
+public class MyGdxGame extends Game {
+	
 	SpriteBatch batch;
 	public static final float SPEED = 120;
 	Texture img;
@@ -18,24 +22,23 @@ public class MyGdxGame extends ApplicationAdapter {
 	float x1= 300;
 	float y1;
 	float y;
+	public MyGdxGame() { super(); }
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-
+		
+		Render.batch = new SpriteBatch();
 		this.setScreen(new Splash_Screen());
 		img = new Texture("logoJ.png");
 		img1 = new Texture("carlitos.png");
 		img = new Texture("jairo.png");
 
+	
 	}
-	private void setScreen(Splash_Screen splash_Screen) {
-		
-	}
+	
 
-
-	@Override
 	public void render () {
+		super.render();
 		ScreenUtils.clear(1, 1, 1, 1);
 		//Jairo
 		if(Gdx.input.isKeyPressed(Keys.UP)) {
@@ -65,7 +68,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		}
 		batch.begin();
 		batch.draw(img, x, y);
-		batch.draw(img1, x1, y1);
+		batch.draw(img1,	 x1, y1);
 		batch.end();
 		
 	}
@@ -74,5 +77,6 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+
 	}
-}
+}	
