@@ -18,6 +18,7 @@ public class MyGdxGame extends Game {
 	public static final float SPEED = 120;
 	Texture img;
 	Texture img1;
+	Texture img2;
 	float x;
 	float x1= 300;
 	float y1;
@@ -26,10 +27,9 @@ public class MyGdxGame extends Game {
 	
 	@Override
 	public void create () {
-		
 		Render.batch = new SpriteBatch();
+		batch = new SpriteBatch();
 		this.setScreen(new Splash_Screen());
-		img = new Texture("logoJ.png");
 		img1 = new Texture("carlitos.png");
 		img = new Texture("jairo.png");
 
@@ -39,7 +39,7 @@ public class MyGdxGame extends Game {
 
 	public void render () {
 		super.render();
-		ScreenUtils.clear(1, 1, 1, 1);
+
 		//Jairo
 		if(Gdx.input.isKeyPressed(Keys.UP)) {
 			y += +SPEED * Gdx.graphics.getDeltaTime();
@@ -68,7 +68,7 @@ public class MyGdxGame extends Game {
 		}
 		batch.begin();
 		batch.draw(img, x, y);
-		batch.draw(img1,	 x1, y1);
+		batch.draw(img1, x1, y1);
 		batch.end();
 		
 	}

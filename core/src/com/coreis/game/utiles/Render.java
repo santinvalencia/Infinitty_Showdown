@@ -8,7 +8,7 @@ public class Render {
 	public static SpriteBatch batch;
 	
 	public static void limpiarPantalla () {
-		Gdx.gl.glClearColor(1,1,1,1);
+		Gdx.gl.glClearColor(3,3,3,3);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		

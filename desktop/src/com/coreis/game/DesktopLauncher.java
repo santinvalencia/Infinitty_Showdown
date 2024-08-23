@@ -8,7 +8,7 @@ import com.badlogic.gdx.*;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setForegroundFPS(60);
+		config.setForegroundFPS(144);
 		config.setTitle("Infinitty Showdown");
 		new Lwjgl3Application(new MyGdxGame(), config);
 		
