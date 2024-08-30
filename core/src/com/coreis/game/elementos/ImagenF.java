@@ -16,6 +16,10 @@ public class ImagenF {
 	public void dibujar () {
 		s.draw(Render.batch);	
 		
+	}
+	public void setAparicionF(float f) {
+		s.setAlpha(f);
+		
 		
 	}
 	
