@@ -13,8 +13,10 @@
 	    private SpriteBatch batch;
 	    private Texture t;
 	    ImagenF fondo;
-	    boolean fadeInTerminado = false;
+	    boolean fadeInTerminado = false, termina = false;
 	    float f = 0;
+	    float contTiempo=0, tiempoEspera= 5;
+	    float contTiempoTermina=0, tiempoTermina=5;
 	    
 	    public class immagenCarga{
 	    	
@@ -43,13 +45,33 @@
 	        
 	    }
 	    private void procesarFade() {
+	    	if(!fadeInTerminado) {
+	    		f+=0.01f;
+	    		if(f>1){
+	    		f=1;
+	    		fadeInTerminado = true;
+	    		}
+	    		
+	    	}else {
+	    		contTiempo+=0.1F;
+	    		if(contTiempo>tiempoEspera) {
+	    			f -= 0.01f;
+	    			if (f<0) {
+	    				f=0;
+	    				termina = true;
+	    			}
+	    		}
+	    	}
 	    	fondo.setAparicionF(f);
-	    	f+=0.01f;
 	    	
-	    	
-	    	
-	    	
-	    }
+	    		if(termina) {
+	    		contTiempoTermina+=0.04f;
+
+	    		}
+	    			
+	    	}	    	
+	    
+	
 	 
 	    @Override
 	    public void hide() { }
