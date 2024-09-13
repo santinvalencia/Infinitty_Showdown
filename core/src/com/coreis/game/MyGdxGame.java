@@ -85,7 +85,7 @@ public class MyGdxGame extends Game {
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);
-		batch.draw(img2, z, z1);
+		// batch.draw(img2, z, z1);
 		batch.end();
 		
 	}
