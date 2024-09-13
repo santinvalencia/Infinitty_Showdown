@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.coreis.game.pantallas.PantallaMenu;
 import com.coreis.game.pantallas.Splash_Screen;
 import com.coreis.game.utiles.Render;
 import com.badlogic.gdx.Game;
@@ -35,6 +36,9 @@ public class MyGdxGame extends Game {
 		img1 = new Texture("carlitos.png");
 		img = new Texture("jairo.png");
 		img2= new Texture ("echeverri.png");
+		
+		
+	
 
 	
 	}
@@ -85,8 +89,9 @@ public class MyGdxGame extends Game {
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);
-		batch.draw(img2, z, z1);
+		//batch.draw(img2, z, z1);
 		batch.end();
+		
 		
 	}
 	

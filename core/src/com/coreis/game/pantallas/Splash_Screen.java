@@ -7,6 +7,10 @@
 	import com.coreis.game.elementos.ImagenF;
 	import com.coreis.game.utiles.Recursos;
 	import com.coreis.game.utiles.Render;
+	
+
+
+	
 
 	 
 	public class Splash_Screen implements Screen {
@@ -21,7 +25,7 @@
 	    public class immagenCarga{
 	    	
 	    	public static final String loadingScreen = "assets/logoCVF.PNG";
-	    	public static final String MenuScreen = "assets/MenuScreen.png";
+	   
 	    }
 	    public Splash_Screen() {
 	        super();
@@ -67,11 +71,11 @@
 	    	
 	    		if(termina) {
 	    		contTiempoTermina+=0.04f;
-
+	    		if(contTiempoTermina>tiempoTermina) {
+	    		Render.Menu.setScreen(new PantallaMenu());
 	    		}
-	    			
-	    	}	    	
-	    
+	}
+	}   
 	
 	 
 	    @Override
@@ -89,7 +93,7 @@
 	    @Override
 	    public void resize(int width, int height) { }
 	 
-	    @Override
+	    @Overrided
 	    public void dispose() {
 	        t.dispose();
 	        batch.dispose();
