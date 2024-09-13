@@ -21,6 +21,7 @@
 	    public class immagenCarga{
 	    	
 	    	public static final String loadingScreen = "assets/logoCVF.PNG";
+	    	public static final String MenuScreen = "assets/MenuScreen.png";
 	    }
 	    public Splash_Screen() {
 	        super();

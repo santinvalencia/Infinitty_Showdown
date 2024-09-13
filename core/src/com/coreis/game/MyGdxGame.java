@@ -23,6 +23,8 @@ public class MyGdxGame extends Game {
 	float x1= 300;
 	float y1;
 	float y;
+	float z;
+	float z1;
 	public MyGdxGame() { super(); }
 	
 	@Override
@@ -32,6 +34,7 @@ public class MyGdxGame extends Game {
 		this.setScreen(new Splash_Screen());
 		img1 = new Texture("carlitos.png");
 		img = new Texture("jairo.png");
+		img2= new Texture ("echeverri.png");
 
 	
 	}
@@ -66,12 +69,27 @@ public class MyGdxGame extends Game {
 		if(Gdx.input.isKeyPressed(Keys.D)) {
 			x1 += + SPEED * Gdx.graphics.getDeltaTime();
 		}
+		if(Gdx.input.isKeyPressed(Keys.J)) {
+			z += +SPEED * Gdx.graphics.getDeltaTime();
+		}
+		if(Gdx.input.isKeyPressed(Keys.H)) {
+			z += -SPEED * Gdx.graphics.getDeltaTime();
+		}
+		if(Gdx.input.isKeyPressed(Keys.K)) {
+			z1 += -SPEED * Gdx.graphics.getDeltaTime();
+		}
+		if(Gdx.input.isKeyPressed(Keys.L)) {
+			z1 += + SPEED * Gdx.graphics.getDeltaTime();
+		}
+		
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);
+		batch.draw(img2, z, z1);
 		batch.end();
 		
 	}
+	
 	
 	@Override
 	public void dispose () {
