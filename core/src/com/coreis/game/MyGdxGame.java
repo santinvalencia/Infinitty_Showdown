@@ -89,7 +89,11 @@ public class MyGdxGame extends Game {
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);
+<<<<<<< HEAD
 		//batch.draw(img2, z, z1);
+=======
+		// batch.draw(img2, z, z1);
+>>>>>>> 00b0b5d75ccc3b75ef9cb822f08c80c62fd6be51
 		batch.end();
 		
 		
