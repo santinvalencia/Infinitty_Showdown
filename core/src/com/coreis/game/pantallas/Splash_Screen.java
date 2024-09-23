@@ -93,7 +93,7 @@
 	    @Override
 	    public void resize(int width, int height) { }
 	 
-	    @Overrided
+	    @Override
 	    public void dispose() {
 	        t.dispose();
 	        batch.dispose();
