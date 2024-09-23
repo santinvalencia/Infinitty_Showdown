@@ -10,7 +10,6 @@
 	
 
 
-	
 
 	 
 	public class Splash_Screen implements Screen {

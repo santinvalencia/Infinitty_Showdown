@@ -33,7 +33,6 @@ public class MyGdxGame extends Game {
 	public void create () {
 		batch = Render.batch;
 		this.setScreen(new PantallaMenu());
-		this.setScreen(new Juego());
 		
 		
 		
