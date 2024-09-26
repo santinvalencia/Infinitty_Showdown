@@ -32,8 +32,9 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		batch = Render.batch;
+		this.setScreen(new Splash_Screen());
 		this.setScreen(new PantallaMenu());
-		
+		this.setScreen(new Juego());
 		
 		
 	
