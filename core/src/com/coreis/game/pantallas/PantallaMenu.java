@@ -22,7 +22,7 @@ import com.coreis.game.elementos.ImagenF;
 	    
 	    public class immagenCarga{
 	    	
-	    	public static final String MenuScreen = "assets/MenuScreen.jpeg";
+	    	public static final String MenuScreen = "assets/fondos/MenuScreen.jpeg";
 	    }
 	    public PantallaMenu(MyGdxGame game) {
 	        this.game= game;

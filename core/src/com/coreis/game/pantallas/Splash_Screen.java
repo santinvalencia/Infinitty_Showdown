@@ -73,8 +73,8 @@ import com.coreis.game.elementos.ImagenF;
 	    	
 	    		if(termina) {
 	    		contTiempoTermina+=0.04f;
-	    		if(contTiempoTermina>tiempoTermina) {
-	    		Render.Menu.setScreen(new PantallaMenu(game));
+	    		if(contTiempoTermina>=tiempoTermina) {
+	    		
 	    		}
 	}
 	}   
