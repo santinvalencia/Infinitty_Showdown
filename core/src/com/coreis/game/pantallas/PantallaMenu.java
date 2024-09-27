@@ -34,15 +34,12 @@ import com.coreis.game.elementos.ImagenF;
 	    public void show() { 
 		   fondo = new ImagenF(Recursos.MENU);
 		   batch = Render.batch;
-		   
-		
-		   
 	   }
 	    @Override
 	    public void render(float delta) {
 	    	time += 0.0001f;
 	    	if(Gdx.input.isKeyPressed(Keys.ENTER)) {
-	    		game.setScreen(new Juego());
+	    		game.setScreen(new Juego(game));
 	    	}
 	    		
 	    	

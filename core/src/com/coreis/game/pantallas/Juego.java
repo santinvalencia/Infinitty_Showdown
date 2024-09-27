@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.coreis.game.utiles.Recursos;
 import com.coreis.game.utiles.Render;
+import com.coreis.game.MyGdxGame;
 import com.coreis.game.elementos.ImagenF;
 
 public class Juego implements Screen{
 	SpriteBatch batch;
+	final MyGdxGame game;
 	public static final float SPEED = 120;
 	Texture img;
 	Texture fondo;
@@ -21,6 +23,11 @@ public class Juego implements Screen{
 	float y1;
 	float y;
 	boolean color=false;
+	
+	public Juego(MyGdxGame game) {
+        this.game= game;
+        batch = new SpriteBatch();
+    }
 	@Override
 	public void show() {
 		// TODO Auto-generated method
@@ -36,6 +43,9 @@ public class Juego implements Screen{
 		MovJairo();
 		MovCarlitos();
 		Render.limpiarPantalla();
+		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
+			game.setScreen(new PantallaMenu(game));
+		}
 		if (Gdx.input.isKeyJustPressed(Keys.K)) {
 			color = !color;
 			if(color) {
