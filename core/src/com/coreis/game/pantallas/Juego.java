@@ -23,8 +23,7 @@ public class Juego implements Screen{
 	boolean color=false;
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method
 		batch = Render.batch;
 		fondo = new Texture(Recursos.FONDOJUEGO2);
 		img1 = new Texture("carlitos.png");
@@ -37,13 +36,14 @@ public class Juego implements Screen{
 		MovJairo();
 		MovCarlitos();
 		Render.limpiarPantalla();
-		if (Gdx.input.isKeyPressed(Keys.ENTER)) {
+		if (Gdx.input.isKeyJustPressed(Keys.K)) {
 			color = !color;
-		}
-		if (color) {
-			fondo = new Texture(Recursos.FONDOJUEGO);
-		}if(!color) {
-			fondo1 = new Texture(Recursos.FONDOJUEGO2);
+			if(color) {
+				fondo = new Texture(Recursos.FONDOJUEGO2);
+			}
+			if (!color) {
+				fondo = new Texture(Recursos.FONDOJUEGO);
+			}
 		}
 			batch.begin();
 			batch.draw(fondo, 0, 0);
