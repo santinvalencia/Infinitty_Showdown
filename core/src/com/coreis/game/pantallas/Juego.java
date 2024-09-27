@@ -18,8 +18,6 @@ public class Juego implements Screen{
 	float y1;
 	float y;
 	boolean color=false;
-	float z;
-	float z1;
 	
 	@Override
 	public void show() {
@@ -32,51 +30,11 @@ public class Juego implements Screen{
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		
-		//Jairo
-		if(Gdx.input.isKeyPressed(Keys.UP)) {
-			y += +SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			y += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			x += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			x += + SPEED * Gdx.graphics.getDeltaTime();
-		}
-		//Carlitos
-		if(Gdx.input.isKeyPressed(Keys.W)) {
-			y1 += +SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.S)) {
-			y1 += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.A)) {
-			x1 += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.D)) {
-			x1 += + SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.J)) {
-			z += +SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.H)) {
-			z += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.K)) {
-			z1 += -SPEED * Gdx.graphics.getDeltaTime();
-		}
-		if(Gdx.input.isKeyPressed(Keys.L)) {
-			z1 += + SPEED * Gdx.graphics.getDeltaTime();
-		}
-		
+		MovJairo();
+		MovCarlitos();
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);
-		//batch.draw(img2, z, z1);
-		// batch.draw(img2, z, z1);
 		batch.end();
 	}
 	@Override
@@ -102,7 +60,36 @@ public class Juego implements Screen{
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+		batch.dispose();
 	}
-	
+	public void MovJairo() {
+		//Jairo
+				if(Gdx.input.isKeyPressed(Keys.UP)) {
+					y += +SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+					y += -SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+					x += -SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+					x += + SPEED * Gdx.graphics.getDeltaTime();
+				}
+	}
+	public void MovCarlitos() {
+		//Carlitos
+				if(Gdx.input.isKeyPressed(Keys.W)) {
+					y1 += +SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.S)) {
+					y1 += -SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.A)) {
+					x1 += -SPEED * Gdx.graphics.getDeltaTime();
+				}
+				if(Gdx.input.isKeyPressed(Keys.D)) {
+					x1 += + SPEED * Gdx.graphics.getDeltaTime();
+				}
+	}
 }
