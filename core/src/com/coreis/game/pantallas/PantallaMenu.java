@@ -1,11 +1,12 @@
 package com.coreis.game.pantallas;
 	import com.badlogic.gdx.Gdx;
 	import com.badlogic.gdx.Screen;
-	import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.GL20;
 	import com.badlogic.gdx.graphics.Texture;
 	import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-	import com.coreis.game.elementos.ImagenF;
+import com.coreis.game.MyGdxGame;
+import com.coreis.game.elementos.ImagenF;
 
 	import com.coreis.game.utiles.Recursos;
 	import com.coreis.game.utiles.Render;
@@ -13,19 +14,20 @@ package com.coreis.game.pantallas;
 
 	 
 	public class PantallaMenu implements Screen {
+		final MyGdxGame game;
 	    private SpriteBatch batch;
 	    private Texture t;
 	    ImagenF fondo;
-	   
+	    private float time = 0;
 	    
 	    public class immagenCarga{
 	    	
-	    	public static final String MenuScreen = "assets/MenuScreen.png";
+	    	public static final String MenuScreen = "assets/MenuScreen.jpeg";
 	    }
-	    public PantallaMenu() {
-	        super();
+	    public PantallaMenu(MyGdxGame game) {
+	        this.game= game;
 	        batch = new SpriteBatch();
-	        t = new Texture("MenuScreen.png");
+	        t = new Texture("MenuScreen.jpeg");
 	    }
 	   @Override
 	   
@@ -38,7 +40,11 @@ package com.coreis.game.pantallas;
 	   }
 	    @Override
 	    public void render(float delta) {
-
+	    	time += 0.0001f;
+	    	if(Gdx.input.isKeyPressed(Keys.ENTER)) {
+	    		game.setScreen(new Juego());
+	    	}
+	    		
 	    	
 	        batch.begin();
 	        fondo.dibujar();

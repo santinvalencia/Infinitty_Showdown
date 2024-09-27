@@ -2,6 +2,7 @@ package com.coreis.game.pantallas;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.coreis.game.utiles.Render;
@@ -16,6 +17,7 @@ public class Juego implements Screen{
 	float x1= 300;
 	float y1;
 	float y;
+	boolean color=false;
 	float z;
 	float z1;
 	
@@ -69,7 +71,7 @@ public class Juego implements Screen{
 		if(Gdx.input.isKeyPressed(Keys.L)) {
 			z1 += + SPEED * Gdx.graphics.getDeltaTime();
 		}
-
+		
 		batch.begin();
 		batch.draw(img, x, y);
 		batch.draw(img1, x1, y1);

@@ -1,18 +1,17 @@
 	package com.coreis.game.pantallas;
 	import com.badlogic.gdx.Gdx;
-	import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 	import com.badlogic.gdx.graphics.GL20;
 	import com.badlogic.gdx.graphics.Texture;
 	import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-	import com.coreis.game.elementos.ImagenF;
+import com.coreis.game.MyGdxGame;
+import com.coreis.game.elementos.ImagenF;
 	import com.coreis.game.utiles.Recursos;
 	import com.coreis.game.utiles.Render;
 	
-
-
-
-	 
 	public class Splash_Screen implements Screen {
+		final MyGdxGame game;
 	    private SpriteBatch batch;
 	    private Texture t;
 	    ImagenF fondo;
@@ -26,8 +25,8 @@
 	    	public static final String loadingScreen = "assets/logoCVF.PNG";
 	   
 	    }
-	    public Splash_Screen() {
-	        super();
+	    public Splash_Screen(MyGdxGame game) {
+	        this.game = game;
 	        batch = new SpriteBatch();
 	        t = new Texture("logoCVF.PNG");
 	    }
@@ -40,7 +39,11 @@
 	   }
 	    @Override
 	    public void render(float delta) {
-
+	    	
+	    	if (termina) {
+	    		
+	    		game.setScreen(new PantallaMenu(game));
+	    	}
 	    	Render.limpiarPantalla();
 	    	procesarFade();
 	        batch.begin();
@@ -71,7 +74,7 @@
 	    		if(termina) {
 	    		contTiempoTermina+=0.04f;
 	    		if(contTiempoTermina>tiempoTermina) {
-	    		Render.Menu.setScreen(new PantallaMenu());
+	    		Render.Menu.setScreen(new PantallaMenu(game));
 	    		}
 	}
 	}   
@@ -96,5 +99,6 @@
 	    public void dispose() {
 	        t.dispose();
 	        batch.dispose();
+	        
 	    }
 	}

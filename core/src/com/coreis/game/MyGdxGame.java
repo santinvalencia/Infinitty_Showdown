@@ -15,26 +15,18 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.Timer; 	
 
 public class MyGdxGame extends Game {
-	
 	SpriteBatch batch;
-	public static final float SPEED = 120;
-	Texture img;
-	Texture img1;
-	Texture img2;
-	float x;
-	float x1= 300;
-	float y1;
-	float y;
-	float z;
-	float z1;
-	public MyGdxGame() { super(); }
+	public MyGdxGame() { 
+		super(); 
+	}
 	
 	@Override
 	public void create () {
 		batch = Render.batch;
-		this.setScreen(new Splash_Screen());
-		this.setScreen(new PantallaMenu());
-		this.setScreen(new Juego());
+		
+		this.setScreen(new Splash_Screen(this));
+		// this.setScreen(new PantallaMenu());
+		//this.setScreen(new Juego());
 		
 		
 	
@@ -54,7 +46,6 @@ public class MyGdxGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 
 	}
 }	
