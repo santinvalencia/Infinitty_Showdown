@@ -1,17 +1,30 @@
 package com.coreis.game.clases;
 
 public class Posicion {
-	private int posX;
-	private int posY;
-	private int posZ;
-
+	private float posX;
+	private float posY;
 	
-	public Posicion(int posX, int posY, int posZ) {
+	
+	public Posicion(float posX, float posY) {
 		super();
 		this.posX = posX;
 		this.posY = posY;
-		this.posZ = posZ;
+	}
+	public float getPosX() {
+		return posX;
+	}
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+	public float getPosY() {
+		return posY;
+	}
+	public void setPosY(float posY) {
+		this.posY = posY;
 	}
 
+	
+	
+	
 
 }

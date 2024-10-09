@@ -7,22 +7,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.coreis.game.utiles.Recursos;
 import com.coreis.game.utiles.Render;
+
+import ENUMS.Controles;
+import ENUMS.Velocidad;
+
 import com.coreis.game.MyGdxGame;
+import com.coreis.game.clases.Jugador;
+import com.coreis.game.clases.Posicion;
 import com.coreis.game.elementos.ImagenF;
 
 public class Juego implements Screen{
 	SpriteBatch batch;
 	final MyGdxGame game;
 	public static final float SPEED = 120;
-	Texture img;
+	Posicion posCarlitos= new Posicion (0, 0);
+	Posicion posJairo = new Posicion(500, 0);
+	Jugador Carlitos;
+	Jugador Jairo;
 	Texture fondo;
-	Texture img1;
 	Texture fondo1;
-	float x;
-	float x1= 300;
-	float y1;
-	float y;
-	boolean color=false;
+	boolean color=true;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
@@ -30,18 +34,28 @@ public class Juego implements Screen{
     }
 	@Override
 	public void show() {
-		// TODO Auto-generated method
+		// TODO Auto-generated method++
 		batch = Render.batch;
 		fondo = new Texture(Recursos.FONDOJUEGO2);
-		img1 = new Texture("carlitos.png");
-		img = new Texture("jairo.png");
+		Jairo = new Jugador(
+				2, posJairo, "Jairo",
+				100, Velocidad.NORMAL,
+				new Texture("jairo.png"),
+				Controles.JUGADOR2);
+		Carlitos = new Jugador (
+				1, posCarlitos,
+				"Carlitos", 100, Velocidad.NORMAL,
+				new Texture("carlitos.png"),
+				Controles.JUGADOR1
+				);
 		
 	}
+	
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-		MovJairo();
-		MovCarlitos();
+		Jairo.MovimientoJ2();
+		Carlitos.MovimientoJ1();
 		Render.limpiarPantalla();
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
@@ -57,8 +71,8 @@ public class Juego implements Screen{
 		}
 			batch.begin();
 			batch.draw(fondo, 0, 0);
-			batch.draw(img, x, y);
-			batch.draw(img1, x1, y1);
+			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
+			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
 			batch.end();
 		
 		
@@ -88,34 +102,6 @@ public class Juego implements Screen{
 		// TODO Auto-generated method stub
 		batch.dispose();
 	}
-	public void MovJairo() {
-		//Jairo
-				if(Gdx.input.isKeyPressed(Keys.UP)) {
-					y += +SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-					y += -SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-					x += -SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-					x += + SPEED * Gdx.graphics.getDeltaTime();
-				}
-	}
-	public void MovCarlitos() {
-		//Carlitos
-				if(Gdx.input.isKeyPressed(Keys.W)) {
-					y1 += +SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.S)) {
-					y1 += -SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.A)) {
-					x1 += -SPEED * Gdx.graphics.getDeltaTime();
-				}
-				if(Gdx.input.isKeyPressed(Keys.D)) {
-					x1 += + SPEED * Gdx.graphics.getDeltaTime();
-				}
-	}
+	
+	
 }
