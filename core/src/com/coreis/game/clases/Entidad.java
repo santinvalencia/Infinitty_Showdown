@@ -8,8 +8,8 @@ import ENUMS.Velocidad;
 
 abstract public class Entidad{
 	private int id;
-	private static final float SPEED = 120;
-	private Posicion posXY;
+	protected static final float SPEED = 120;
+	protected Posicion posXY;
 	private String Nombre;
 	private int vida;
 	private Velocidad speed;
@@ -40,41 +40,6 @@ abstract public class Entidad{
 	}
 	
 	
-	public void MovimientoJ1() {
-		if(Gdx.input.isKeyPressed(Keys.UP)) {
-			posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
-		}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
-		}
-		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
-		}
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
-		}
 		
-	}
-		public void MovimientoJ2() {
-			if(Gdx.input.isKeyPressed(Keys.W)) {
-				posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
-			}
-			if(Gdx.input.isKeyPressed(Keys.S)) {
-				posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
-			}
-			if(Gdx.input.isKeyPressed(Keys.A)) {
-				posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
-			}
-			if(Gdx.input.isKeyPressed(Keys.D)) {
-				posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
-			}
-
-	
-	
-	
-	
-	
-	
-		}	
 	
 }

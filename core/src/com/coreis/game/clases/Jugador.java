@@ -1,5 +1,7 @@
 package com.coreis.game.clases;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 
 import ENUMS.Controles;
@@ -15,7 +17,35 @@ public class Jugador extends Entidad{
 
 	
 	
-	
+	public void MovimientoJ1() {
+		if(Gdx.input.isKeyPressed(Keys.UP)) {
+			posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
+		}
+		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+			posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
+		}
+		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+			posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
+		}
+		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+			posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
+		}
+		
+	}
+		public void MovimientoJ2() {
+			if(Gdx.input.isKeyPressed(Keys.W)) {
+				posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
+			}
+			if(Gdx.input.isKeyPressed(Keys.S)) {
+				posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
+			}
+			if(Gdx.input.isKeyPressed(Keys.A)) {
+				posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
+			}
+			if(Gdx.input.isKeyPressed(Keys.D)) {
+				posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
+			}
+		}
 	
 	
 	

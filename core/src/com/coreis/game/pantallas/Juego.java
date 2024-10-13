@@ -42,6 +42,8 @@ public class Juego implements Screen{
 				100, Velocidad.NORMAL,
 				new Texture("jairo.png"),
 				Controles.JUGADOR2);
+		
+		
 		Carlitos = new Jugador (
 				1, posCarlitos,
 				"Carlitos", 100, Velocidad.NORMAL,
