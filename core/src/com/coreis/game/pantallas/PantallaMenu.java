@@ -2,7 +2,6 @@ package com.coreis.game.pantallas;
 	import com.badlogic.gdx.Gdx;
 	import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.GL20;
 	import com.badlogic.gdx.graphics.Texture;
 	import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.coreis.game.MyGdxGame;
@@ -32,8 +31,8 @@ import com.coreis.game.elementos.ImagenF;
 	   @Override
 	   
 	    public void show() { 
-		   fondo = new ImagenF(Recursos.MENU);
 		   batch = Render.batch;
+		   fondo = new ImagenF(Recursos.MENU);
 	   }
 	    @Override
 	    public void render(float delta) {
@@ -41,7 +40,7 @@ import com.coreis.game.elementos.ImagenF;
 	    	if(Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    		game.setScreen(new Juego(game));
 	    	}
-	    		
+	    	Render.limpiarPantalla();
 	    	
 	        batch.begin();
 	        fondo.dibujar();

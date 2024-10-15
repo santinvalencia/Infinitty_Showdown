@@ -1,5 +1,5 @@
 package com.coreis.game.pantallas;
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
@@ -62,6 +62,17 @@ public class Juego implements Screen{
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
 		}
+		cambiosMapa();
+		
+			batch.begin();
+			batch.draw(fondo, 0, 0);
+			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
+			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
+			batch.end();
+		
+		
+	}
+	private void cambiosMapa() {
 		if (Gdx.input.isKeyJustPressed(Keys.K)) {
 			color = !color;
 			if(color) {
@@ -71,13 +82,6 @@ public class Juego implements Screen{
 				fondo = new Texture(Recursos.FONDOJUEGO);
 			}
 		}
-			batch.begin();
-			batch.draw(fondo, 0, 0);
-			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
-			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
-			batch.end();
-		
-		
 	}
 	@Override
 	public void resize(int width, int height) {
