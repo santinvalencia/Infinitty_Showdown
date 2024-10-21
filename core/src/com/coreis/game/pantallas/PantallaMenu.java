@@ -18,6 +18,12 @@ import com.coreis.game.elementos.ImagenF;
 	    private Texture t;
 	    ImagenF fondo;
 	    private float time = 0;
+	    Texture BotonJugarInactivo;
+	    Texture BotonJugarActivo;
+	    Texture BotonOpcionesInactivo;
+	    Texture BotonOpcionesActivo;
+	    Texture BotonCreditosInactivo;
+	    Texture BotonCreditosActivo;
 	    
 	    public class immagenCarga{
 	    	
@@ -26,10 +32,14 @@ import com.coreis.game.elementos.ImagenF;
 	    public PantallaMenu(MyGdxGame game) {
 	        this.game= game;
 	        batch = new SpriteBatch();
+	        BotonJugarInactivo = new Texture("BotonJugarInactivo.png");
+	        BotonJugarActivo = new Texture("BotonJugarActivo.png");
+	      
+	        
 	        t = new Texture("MenuScreen.jpeg");
 	    }
 	   @Override
-	   
+	   	
 	    public void show() { 
 		   batch = Render.batch;
 		   fondo = new ImagenF(Recursos.MENU);
@@ -44,6 +54,8 @@ import com.coreis.game.elementos.ImagenF;
 	    	
 	        batch.begin();
 	        fondo.dibujar();
+	        batch.draw(BotonJugarInactivo, 100, 120);
+	        batch.draw(BotonJugarActivo, 100, 100);
 	        batch.end();
 	        
 	    }
