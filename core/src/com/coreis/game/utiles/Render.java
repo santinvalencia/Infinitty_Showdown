@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.coreis.game.MyGdxGame;
 import com.coreis.game.pantallas.PantallaMenu;
 
-public class Render {
+public abstract class Render {
 	public static SpriteBatch batch = new SpriteBatch();;
 	public static MyGdxGame Menu = new MyGdxGame();
 	public static void limpiarPantalla () {

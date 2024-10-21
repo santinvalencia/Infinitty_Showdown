@@ -1,27 +1,21 @@
 package com.coreis.game;
-import com.badlogic.gdx.*;
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.coreis.game.pantallas.Juego;
-import com.coreis.game.pantallas.PantallaMenu;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.coreis.game.pantallas.Splash_Screen;
 import com.coreis.game.utiles.Render;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FitViewport; 	
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport; 	
 
 public class MyGdxGame extends Game {
 	SpriteBatch batch;
-	private FitViewport viewport;
+	private ScreenViewport viewport;
     private Camera camera;
+    private Stage stage;
+    private Table table;
 	public MyGdxGame() { 
 		super(); 
 	}
@@ -31,12 +25,15 @@ public class MyGdxGame extends Game {
 		batch = Render.batch;
 		this.setScreen(new Splash_Screen(this));
 		camera = new PerspectiveCamera();
-        viewport = new FitViewport(800, 480, camera);
+        viewport = new ScreenViewport(camera);
 	}
 	
 
 	public void render () {
 		super.render();
+		//System.out.println(viewport.getScreenHeight());
+		
+		//System.out.println(viewport.getScreenWidth());
 		
 	}
 	

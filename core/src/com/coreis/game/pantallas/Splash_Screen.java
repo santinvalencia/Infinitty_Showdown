@@ -1,5 +1,6 @@
 	package com.coreis.game.pantallas;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -39,12 +40,11 @@ import com.coreis.game.utiles.Render;
 	    public void render(float delta) {
 	    	
 	    	if (termina) {
-	    		
 	    		game.setScreen(new PantallaMenu(game));
 	    	}
 	    	Render.limpiarPantalla();
 	    	procesarFade();
-	        batch.begin();
+	        Render.batch.begin();
 	        fondo.dibujar();
 	        batch.end();
 	        
@@ -58,7 +58,7 @@ import com.coreis.game.utiles.Render;
 	    		}
 	    		
 	    	}else {
-	    		contTiempo+=0.1F;
+	    		contTiempo+=0.1f;
 	    		if(contTiempo>tiempoEspera) {
 	    			f -= 0.01f;
 	    			if (f<0) {
