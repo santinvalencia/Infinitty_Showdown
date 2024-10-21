@@ -10,15 +10,17 @@ import com.coreis.game.utiles.Render;
 
 import ENUMS.Controles;
 import ENUMS.Velocidad;
+import HUD.VidaHud;
 
 import com.coreis.game.MyGdxGame;
 import com.coreis.game.clases.Jugador;
 import com.coreis.game.clases.Posicion;
 import com.coreis.game.elementos.ImagenF;
-
+import Interfaces.HUD;
 public class Juego implements Screen{
 	SpriteBatch batch;
 	final MyGdxGame game;
+	HUD hud;
 	public static final float SPEED = 120;
 	Posicion posCarlitos= new Posicion (0, 0);
 	Posicion posJairo = new Posicion(500, 0);
@@ -36,6 +38,7 @@ public class Juego implements Screen{
 	public void show() {
 		// TODO Auto-generated method++
 		batch = Render.batch;
+		hud = new VidaHud();
 		fondo = new Texture(Recursos.FONDOJUEGO2);
 		Jairo = new Jugador(
 				2, posJairo, "Jairo",
@@ -65,6 +68,7 @@ public class Juego implements Screen{
 		cambiosMapa();
 		
 			batch.begin();
+			hud.dibujar();
 			batch.draw(fondo, 0, 0);
 			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
 			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());

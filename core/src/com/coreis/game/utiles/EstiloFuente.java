@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.coreis.game.utiles.Recursos;
 import com.coreis.game.utiles.Colores;
+import com.badlogic.gdx.graphics.Texture;
 public abstract class EstiloFuente {
 	public static Label.LabelStyle labelStyle;
 	

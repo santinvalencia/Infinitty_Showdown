@@ -3,7 +3,8 @@ package HUD;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.game.Utiles.EstiloFuente;
+import com.coreis.game.utiles.Colores;
+import com.coreis.game.utiles.EstiloFuente;
 
 import Interfaces.HUD;
 
@@ -37,7 +38,7 @@ public class VidaHud implements HUD{
 	}
 	@Override
 	public void crearFuentes() {
-		estiloFuente = EstiloFuente.generarFuente(20, #111111, false);
+		estiloFuente = EstiloFuente.generarFuente(20, Colores.NEGRO, false);
 	}
 	
 }

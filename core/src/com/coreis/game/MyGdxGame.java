@@ -40,7 +40,9 @@ public class MyGdxGame extends Game {
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+		super.dispose();
+		Render.batch.dispose();
+
 
 	}
     public void resize(int width, int height) {
