@@ -38,11 +38,11 @@ public class Juego implements Screen{
 	public void show() {
 		// TODO Auto-generated method++
 		batch = Render.batch;
-		hud = new VidaHud();
+		
 		fondo = new Texture(Recursos.FONDOJUEGO2);
 		Jairo = new Jugador(
 				2, posJairo, "Jairo",
-				100, Velocidad.NORMAL,
+				50, Velocidad.NORMAL,
 				new Texture("jairo.png"),
 				Controles.JUGADOR2);
 		
@@ -53,7 +53,7 @@ public class Juego implements Screen{
 				new Texture("carlitos.png"),
 				Controles.JUGADOR1
 				);
-		
+		hud = new VidaHud(Jairo.getVida());
 	}
 	
 	@Override
@@ -65,15 +65,22 @@ public class Juego implements Screen{
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
 		}
+		if(Gdx.input.isKeyJustPressed(Keys.G)) {
+			Jairo.setVida(49);
+		}
 		cambiosMapa();
 		
 			batch.begin();
-			hud.dibujar();
+			
 			batch.draw(fondo, 0, 0);
 			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
+			
 			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
+			
 			batch.end();
-		
+			batch.begin();
+			hud.dibujar();
+			batch.end();
 		
 	}
 	private void cambiosMapa() {

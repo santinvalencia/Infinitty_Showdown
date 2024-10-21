@@ -38,7 +38,21 @@ abstract public class Entidad{
 	public Texture getImg() {
 		return img;
 	}
-	
+
+	/**
+	 * @return the vida
+	 */
+	public int getVida() {
+		return vida;
+	}
+
+	/**
+	 * @param vida the vida to set
+	 */
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+
 	
 		
 	

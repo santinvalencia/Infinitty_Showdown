@@ -5,5 +5,5 @@ public class Recursos {
 	public static final String MENU = "fondos/MenuScreen.jpeg";
 	public static final String FONDOJUEGO = "fondos/Nocturno.png";
 	public static final String FONDOJUEGO2 = "fondos/Inframundo.png";
-	public static final String FUENTE = "";
+	public static final String FUENTE = "fuentes/Pixellari.ttf";
 }
