@@ -14,10 +14,10 @@ import com.coreis.game.elementos.ImagenF;
 	 
 	public class PantallaMenu implements Screen {
 		final MyGdxGame game;
+		public static final String MenuScreen = "assets/fondos/MenuScreen.jpeg";
 	    private SpriteBatch batch;
 	    private Texture t;
 	    ImagenF fondo;
-	    private float time = 0;
 	    Texture BotonJugarInactivo;
 	    Texture BotonJugarActivo;
 	    Texture BotonOpcionesInactivo;
@@ -25,10 +25,6 @@ import com.coreis.game.elementos.ImagenF;
 	    Texture BotonCreditosInactivo;
 	    Texture BotonCreditosActivo;
 	    
-	    public class immagenCarga{
-	    	
-	    	public static final String MenuScreen = "assets/fondos/MenuScreen.jpeg";
-	    }
 	    public PantallaMenu(MyGdxGame game) {
 	        this.game= game;
 	        batch = new SpriteBatch();
@@ -46,7 +42,6 @@ import com.coreis.game.elementos.ImagenF;
 	   }
 	    @Override
 	    public void render(float delta) {
-	    	time += 0.0001f;
 	    	if(Gdx.input.isKeyPressed(Keys.ENTER)) {
 	    		game.setScreen(new Juego(game));
 	    	}

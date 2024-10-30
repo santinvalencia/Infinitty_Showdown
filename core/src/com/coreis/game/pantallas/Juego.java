@@ -20,7 +20,8 @@ import Interfaces.HUD;
 public class Juego implements Screen{
 	SpriteBatch batch;
 	final MyGdxGame game;
-	HUD hud;
+	VidaHud VidaJairo;
+	VidaHud VidaCarlitos;
 	public static final float SPEED = 120;
 	Posicion posCarlitos= new Posicion (0, 0);
 	Posicion posJairo = new Posicion(500, 0);
@@ -53,7 +54,7 @@ public class Juego implements Screen{
 				new Texture("carlitos.png"),
 				Controles.JUGADOR1
 				);
-		hud = new VidaHud(Jairo.getVida());
+		VidaJairo = new VidaHud(Jairo.getVida(), 1200, 800);
 	}
 	
 	@Override
@@ -79,7 +80,7 @@ public class Juego implements Screen{
 			
 			batch.end();
 			batch.begin();
-			hud.dibujar();
+			VidaJairo.dibujar();
 			batch.end();
 		
 	}

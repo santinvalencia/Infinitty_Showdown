@@ -88,4 +88,11 @@ public class PausaHud implements HUD{
 	public void crearFuentes() {
 		estiloFuente = EstiloFuente.generarFuente(50, Colores.ROJO, false);
 	}
+
+
+	@Override
+	public void poblarStage(int posX, int posY) {
+		// TODO Auto-generated method stub
+		
+	}
 }

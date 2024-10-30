@@ -16,19 +16,14 @@ public class VidaHud implements HUD{
 	private Stage stage;
 	private ScreenViewport vw;
 	private Table tabla, contenedor;
-	private Label BotonPausa;
 	private Label etiqueta;
-	private Label etiqueta2;
-	private Table mostrarVida;
-	private Label mostrarVidaE;
 	private Label.LabelStyle estiloFuente, estiloPeligro, fuenteAdvertencia;
-	boolean owo;
 	
 
-	public VidaHud(int vida) {
+	public VidaHud(int vida, int posX, int posY) {
 	    crearFuentes(); // Primero crear las fuentes
 	    crearActores(vida); // Después de crear las fuentes
-	    poblarStage();
+	    poblarStage(posX, posY);
 	    stage.setDebugAll(true); // Enable debug lines
 	}
 
@@ -45,11 +40,10 @@ public class VidaHud implements HUD{
 	}
 
 	@Override
-	public void poblarStage() {
+	public void poblarStage(int posX, int posY) {
 		stage.addActor(tabla);
-		tabla.add(contenedor).size(300,500);	
-		contenedor.add(etiqueta).size(300,200).expandX();
-		contenedor.row();
+		tabla.add(contenedor).size(100,100);	
+		contenedor.add(etiqueta).expand(posX, posY);
 		
 	}
 
@@ -62,5 +56,12 @@ public class VidaHud implements HUD{
 	@Override
 	public void crearFuentes() {
 		estiloFuente = EstiloFuente.generarFuente(50, Colores.ROJO, false);
+	}
+
+
+	@Override
+	public void poblarStage() {
+		// TODO Auto-generated method stub
+		
 	}
 }
