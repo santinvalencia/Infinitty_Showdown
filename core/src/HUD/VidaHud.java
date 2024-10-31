@@ -42,8 +42,9 @@ public class VidaHud implements HUD{
 	@Override
 	public void poblarStage(int posX, int posY) {
 		stage.addActor(tabla);
-		tabla.add(contenedor).size(100,100);	
-		contenedor.add(etiqueta).expand(posX, posY);
+		tabla.add(contenedor).size(100,100);
+		contenedor.add(etiqueta);
+		contenedor.setY(posY);
 		
 	}
 

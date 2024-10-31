@@ -54,7 +54,8 @@ public class Juego implements Screen{
 				new Texture("carlitos.png"),
 				Controles.JUGADOR1
 				);
-		VidaJairo = new VidaHud(Jairo.getVida(), 1200, 800);
+		VidaJairo = new VidaHud(Jairo.getVida(), 100, 100);
+		VidaCarlitos = new VidaHud(Carlitos.getVida(), 1000, 100);
 	}
 	
 	@Override
@@ -81,6 +82,7 @@ public class Juego implements Screen{
 			batch.end();
 			batch.begin();
 			VidaJairo.dibujar();
+			VidaCarlitos.dibujar();
 			batch.end();
 		
 	}
