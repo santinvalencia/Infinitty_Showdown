@@ -46,6 +46,20 @@ public class Jugador extends Entidad{
 				posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
 			}
 		}
+
+
+
+		public Controles getTipo() {
+			return tipo;
+		}
+
+
+
+		public void setTipo(Controles tipo) {
+			this.tipo = tipo;
+		}
+
+
 	
 	
 	

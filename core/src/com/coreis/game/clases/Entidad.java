@@ -12,7 +12,7 @@ abstract public class Entidad{
 	protected Posicion posXY;
 	private String Nombre;
 	private int vida;
-	private Velocidad speed;
+	private Velocidad velocidad;
 	private Texture img;
 	
 	
@@ -23,7 +23,7 @@ abstract public class Entidad{
 		this.posXY = posXY;
 		Nombre = nombre;
 		this.vida = vida;
-		this.speed = speed;
+		this.velocidad = speed;
 		this.img = img;
 	}
 
@@ -35,22 +35,48 @@ abstract public class Entidad{
 		this.posXY = posXY;
 	}
 
-	public Texture getImg() {
-		return img;
+	public int getId() {
+		return id;
 	}
 
-	/**
-	 * @return the vida
-	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
 	public int getVida() {
 		return vida;
 	}
 
-	/**
-	 * @param vida the vida to set
-	 */
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+
+	public Velocidad getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(Velocidad velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public Texture getImg() {
+		return img;
+	}
+
+	public void setImg(Texture img) {
+		this.img = img;
+	}
+
+	public static float getSpeed() {
+		return SPEED;
 	}
 
 	

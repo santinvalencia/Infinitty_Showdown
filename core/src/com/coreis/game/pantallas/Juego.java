@@ -40,10 +40,11 @@ public class Juego implements Screen{
 		// TODO Auto-generated method++
 		batch = Render.batch;
 		
+		
 		fondo = new Texture(Recursos.FONDOJUEGO2);
 		Jairo = new Jugador(
 				2, posJairo, "Jairo",
-				50, Velocidad.NORMAL,
+				100, Velocidad.NORMAL,
 				new Texture("jairo.png"),
 				Controles.JUGADOR2);
 		
@@ -54,8 +55,8 @@ public class Juego implements Screen{
 				new Texture("carlitos.png"),
 				Controles.JUGADOR1
 				);
-		VidaJairo = new VidaHud(Jairo.getVida(), 100, 100);
-		VidaCarlitos = new VidaHud(Carlitos.getVida(), 1000, 100);
+		VidaJairo = new VidaHud(Jairo);
+		VidaCarlitos = new VidaHud(Carlitos);
 	}
 	
 	@Override
@@ -63,12 +64,18 @@ public class Juego implements Screen{
 		// TODO Auto-generated method stub
 		Jairo.MovimientoJ2();
 		Carlitos.MovimientoJ1();
+		mostrarVida(Carlitos);
+		mostrarVida(Jairo);
 		Render.limpiarPantalla();
+		
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
 		}
 		if(Gdx.input.isKeyJustPressed(Keys.G)) {
-			Jairo.setVida(49);
+			Jairo.setVida(Jairo.getVida()-1);
+		}
+		if(Gdx.input.isKeyJustPressed(Keys.H)) {
+			Carlitos.setVida(50);
 		}
 		cambiosMapa();
 		
@@ -123,5 +130,12 @@ public class Juego implements Screen{
 		batch.dispose();
 	}
 	
-	
+public void mostrarVida(Jugador j) {
+		
+		if(Gdx.input.isKeyJustPressed(Keys.G)) {
+			
+			System.out.println("Vida de "+ j.getNombre() + ": " + j.getVida());
+			
+		}
+	}
 }

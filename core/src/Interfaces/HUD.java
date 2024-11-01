@@ -1,10 +1,13 @@
 package Interfaces;
 
+import com.coreis.game.clases.Jugador;
+
 public interface HUD {
 	void crearFuentes();
-	void crearActores(int a);
-	void poblarStage(int posX, int posY);
-	void dibujar();
+	void crearActores(Jugador j);
 	void poblarStage();
+	void dibujar();
+	
+	
 	
 }
