@@ -10,6 +10,7 @@ import com.coreis.game.utiles.Render;
 
 import ENUMS.Controles;
 import ENUMS.Velocidad;
+import HUD.NombreHud;
 import HUD.VidaHud;
 
 import com.coreis.game.MyGdxGame;
@@ -22,6 +23,8 @@ public class Juego implements Screen{
 	final MyGdxGame game;
 	VidaHud VidaJairo;
 	VidaHud VidaCarlitos;
+	NombreHud NombreCarlitos;
+	NombreHud NombreJairo;
 	public static final float SPEED = 120;
 	Posicion posCarlitos= new Posicion (0, 0);
 	Posicion posJairo = new Posicion(500, 0);
@@ -57,6 +60,8 @@ public class Juego implements Screen{
 				);
 		VidaJairo = new VidaHud(Jairo);
 		VidaCarlitos = new VidaHud(Carlitos);
+		NombreJairo = new NombreHud(Jairo);
+		NombreCarlitos = new NombreHud(Carlitos);
 	}
 	
 	@Override
@@ -67,15 +72,14 @@ public class Juego implements Screen{
 		mostrarVida(Carlitos);
 		mostrarVida(Jairo);
 		Render.limpiarPantalla();
-		
+		quitarVida(Carlitos, Keys.H);
+		quitarVida(Jairo, Keys.G);
+		VidaJairo.refrescarTexto(Jairo);
+		VidaCarlitos.refrescarTexto(Carlitos);
+		NombreJairo.refrescarTexto(Jairo);
+		NombreCarlitos.refrescarTexto(Carlitos);
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
-		}
-		if(Gdx.input.isKeyJustPressed(Keys.G)) {
-			Jairo.setVida(Jairo.getVida()-1);
-		}
-		if(Gdx.input.isKeyJustPressed(Keys.H)) {
-			Carlitos.setVida(50);
 		}
 		cambiosMapa();
 		
@@ -83,14 +87,24 @@ public class Juego implements Screen{
 			
 			batch.draw(fondo, 0, 0);
 			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
-			
 			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
 			
 			batch.end();
+			
+			
+			
 			batch.begin();
 			VidaJairo.dibujar();
 			VidaCarlitos.dibujar();
+			NombreJairo.dibujar();
+			NombreCarlitos.dibujar();
 			batch.end();
+		
+	}
+	public void quitarVida(Jugador j, int a) {
+		if(Gdx.input.isKeyJustPressed(a)) {
+			j.setVida(j.getVida()-1);
+		}
 		
 	}
 	private void cambiosMapa() {
@@ -132,7 +146,7 @@ public class Juego implements Screen{
 	
 public void mostrarVida(Jugador j) {
 		
-		if(Gdx.input.isKeyJustPressed(Keys.G)) {
+		if(Gdx.input.isKeyJustPressed(Keys.U)) {
 			
 			System.out.println("Vida de "+ j.getNombre() + ": " + j.getVida());
 			

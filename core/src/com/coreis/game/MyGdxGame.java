@@ -33,10 +33,6 @@ public class MyGdxGame extends Game {
 
 	public void render () {
 		super.render();
-		//System.out.println(viewport.getScreenHeight());
-		
-		//System.out.println(viewport.getScreenWidth());
-		
 	}
 	
 	
