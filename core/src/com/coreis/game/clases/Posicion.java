@@ -6,7 +6,6 @@ public class Posicion {
 	
 	
 	public Posicion(float posX, float posY) {
-		super();
 		this.posX = posX;
 		this.posY = posY;
 	}

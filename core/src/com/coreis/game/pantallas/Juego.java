@@ -45,15 +45,13 @@ public class Juego implements Screen{
 		
 		
 		fondo = new Texture(Recursos.FONDOJUEGO2);
-		Jairo = new Jugador(
-				2, posJairo, "Jairo",
-				100, Velocidad.NORMAL,
-				new Texture("jairo.png"),
-				Controles.JUGADOR2);
+		Jairo = new Jugador(2, 1000,0,
+				"Jairo",100, Velocidad.NORMAL,
+				new Texture("jairo.png"),Controles.JUGADOR2);
 		
 		
 		Carlitos = new Jugador (
-				1, posCarlitos,
+				1, 0,0,
 				"Carlitos", 100, Velocidad.NORMAL,
 				new Texture("carlitos.png"),
 				Controles.JUGADOR1
@@ -64,9 +62,16 @@ public class Juego implements Screen{
 		NombreCarlitos = new NombreHud(Carlitos);
 	}
 	
+	public void CaidaLibre(Jugador j) {
+		if(j.getPosY()<0) {
+			j.setPosY(0);
+		}
+		if(j.getPosY()>0) {
+		j.setPosY(j.getPosY()-2);
+		}
+	}
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		Jairo.MovimientoJ2();
 		Carlitos.MovimientoJ1();
 		mostrarVida(Carlitos);
@@ -74,6 +79,8 @@ public class Juego implements Screen{
 		Render.limpiarPantalla();
 		quitarVida(Carlitos, Keys.H);
 		quitarVida(Jairo, Keys.G);
+		CaidaLibre(Jairo);
+		CaidaLibre(Carlitos);
 		VidaJairo.refrescarTexto(Jairo);
 		VidaCarlitos.refrescarTexto(Carlitos);
 		NombreJairo.refrescarTexto(Jairo);
@@ -86,8 +93,8 @@ public class Juego implements Screen{
 			batch.begin();
 			
 			batch.draw(fondo, 0, 0);
-			batch.draw(Jairo.getImg(), Jairo.getPosXY().getPosX(),Jairo.getPosXY().getPosY());
-			batch.draw(Carlitos.getImg(), Carlitos.getPosXY().getPosX(),Carlitos.getPosXY().getPosY());
+			batch.draw(Jairo.getImg(), Jairo.getPosX(),Jairo.getPosY());
+			batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
 			
 			batch.end();
 			

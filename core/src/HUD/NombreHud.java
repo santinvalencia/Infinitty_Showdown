@@ -43,7 +43,7 @@ public class NombreHud implements HUD{
 			tabla.setPosition(265, 728);
 		}
 		if(j.getTipo() == Controles.JUGADOR2) {
-			tabla.setPosition(990, 728);
+			tabla.setPosition(1000, 728);
 		}
 		contenedor = new Table();
 		etiqueta = new Label(""+j.getNombre(), estiloFuente);

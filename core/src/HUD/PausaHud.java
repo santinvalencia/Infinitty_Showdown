@@ -30,7 +30,7 @@ public class PausaHud implements HUD{
 	public PausaHud(Jugador j) {
 	    crearFuentes(); // Primero crear las fuentes
 	    crearActores(j); // Después de crear las fuentes
-	    poblarStage();
+	    poblarStage(j);
 	    stage.setDebugAll(true); // Enable debug lines
 	    
 	}
@@ -50,7 +50,7 @@ public class PausaHud implements HUD{
 
 
 	@Override
-	public void poblarStage() {
+	public void poblarStage(Jugador j) {
 		
 		stage.addActor(tabla);
 		tabla.add(contenedor).size(300,500);	
@@ -81,6 +81,13 @@ public class PausaHud implements HUD{
 	@Override
 	public void crearFuentes() {
 		estiloFuente = EstiloFuente.generarFuente(50, Colores.ROJO, false);
+	}
+
+
+	@Override
+	public void refrescarTexto(Jugador j) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

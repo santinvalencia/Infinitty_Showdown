@@ -9,41 +9,39 @@ import ENUMS.Velocidad;
 
 public class Jugador extends Entidad{
 	private Controles tipo;
-
-	public Jugador(int id, Posicion posXYZ, String nombre, int vida, Velocidad speed, Texture img, Controles tipo) {
-		super(id, posXYZ, nombre, vida, speed, img);
+	
+	public Jugador(int id, float posX, float posY, String nombre, int vida, Velocidad velocidad, Texture img,
+			Controles tipo) {
+		super(id, posX, posY, nombre, vida, velocidad, img);
 		this.tipo = tipo;
 	}
-
-	
-	
 	public void MovimientoJ1() {
 		if(Gdx.input.isKeyPressed(Keys.UP)) {
-			posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
+			setPosY(getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
 		}
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
+			setPosY(getPosY()-SPEED * Gdx.graphics.getDeltaTime());
 		}
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
+			setPosX(getPosX()-SPEED * Gdx.graphics.getDeltaTime());
 		}
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
+			setPosX(getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
 		}
 		
 	}
 		public void MovimientoJ2() {
 			if(Gdx.input.isKeyPressed(Keys.W)) {
-				posXY.setPosY(posXY.getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
+				setPosY(getPosY()+SPEED * Gdx.graphics.getDeltaTime()) ;
 			}
 			if(Gdx.input.isKeyPressed(Keys.S)) {
-				posXY.setPosY(posXY.getPosY()-SPEED * Gdx.graphics.getDeltaTime());
+				setPosY(getPosY()-SPEED * Gdx.graphics.getDeltaTime());
 			}
 			if(Gdx.input.isKeyPressed(Keys.A)) {
-				posXY.setPosX(posXY.getPosX()-SPEED * Gdx.graphics.getDeltaTime());
+				setPosX(getPosX()-SPEED * Gdx.graphics.getDeltaTime());
 			}
 			if(Gdx.input.isKeyPressed(Keys.D)) {
-				posXY.setPosX(posXY.getPosX()+ SPEED * Gdx.graphics.getDeltaTime());
+				setPosX(getPosX()+SPEED * Gdx.graphics.getDeltaTime());
 			}
 		}
 

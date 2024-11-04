@@ -8,8 +8,9 @@ import ENUMS.Velocidad;
 
 abstract public class Entidad{
 	private int id;
-	protected static final float SPEED = 120;
-	protected Posicion posXY;
+	protected static final float SPEED = 240;
+	private float posX;
+	private float posY;
 	private String Nombre;
 	private int vida;
 	private Velocidad velocidad;
@@ -17,23 +18,38 @@ abstract public class Entidad{
 	
 	
 
-	public Entidad(int id, Posicion posXY, String nombre, int vida, Velocidad speed, Texture img) {
+	
+
+	public Entidad(int id, float posX, float posY, String nombre, int vida, Velocidad velocidad, Texture img) {
 		super();
 		this.id = id;
-		this.posXY = posXY;
+		this.posX = posX;
+		this.posY = posY;
 		Nombre = nombre;
 		this.vida = vida;
-		this.velocidad = speed;
+		this.velocidad = velocidad;
 		this.img = img;
 	}
+	
 
-	public Posicion getPosXY() {
-		return posXY;
+	public float getPosX() {
+		return posX;
 	}
 
-	public void setPosXY(Posicion posXY) {
-		this.posXY = posXY;
+
+	public void setPosX(float posX) {
+		this.posX = posX;
 	}
+
+
+	public float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
 
 	public int getId() {
 		return id;
