@@ -30,7 +30,6 @@ public class Juego implements Screen{
 	Posicion posJairo = new Posicion(500, 0);
 	Jugador Carlitos;
 	Jugador Jairo;
-	Texture fondo;
 	Texture fondo1;
 	boolean color=true;
 	
@@ -44,7 +43,7 @@ public class Juego implements Screen{
 		batch = Render.batch;
 		
 		
-		fondo = new Texture(Recursos.FONDOJUEGO2);
+		fondo1 = new Texture(Recursos.FONDOJUEGO2);
 		Jairo = new Jugador(2, 1000,0,
 				"Jairo",100, Velocidad.NORMAL,
 				new Texture("jairo.png"),Controles.JUGADOR2);
@@ -72,11 +71,11 @@ public class Juego implements Screen{
 	}
 	@Override
 	public void render(float delta) {
+		Render.limpiarPantalla();
 		Jairo.MovimientoJ2();
 		Carlitos.MovimientoJ1();
 		mostrarVida(Carlitos);
 		mostrarVida(Jairo);
-		Render.limpiarPantalla();
 		quitarVida(Carlitos, Keys.H);
 		quitarVida(Jairo, Keys.G);
 		CaidaLibre(Jairo);
@@ -90,22 +89,21 @@ public class Juego implements Screen{
 		}
 		cambiosMapa();
 		
-			batch.begin();
+		batch.begin();
+		batch.draw(fondo1, 0, 0);
+		batch.draw(Jairo.getImg(), Jairo.getPosX(),Jairo.getPosY());
+		batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
 			
-			batch.draw(fondo, 0, 0);
-			batch.draw(Jairo.getImg(), Jairo.getPosX(),Jairo.getPosY());
-			batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
-			
-			batch.end();
-			
+		batch.end();
 			
 			
-			batch.begin();
-			VidaJairo.dibujar();
-			VidaCarlitos.dibujar();
-			NombreJairo.dibujar();
-			NombreCarlitos.dibujar();
-			batch.end();
+			
+		batch.begin();
+		VidaJairo.dibujar();
+		VidaCarlitos.dibujar();
+		NombreJairo.dibujar();
+		NombreCarlitos.dibujar();
+		batch.end();
 		
 	}
 	public void quitarVida(Jugador j, int a) {
@@ -118,10 +116,10 @@ public class Juego implements Screen{
 		if (Gdx.input.isKeyJustPressed(Keys.K)) {
 			color = !color;
 			if(color) {
-				fondo = new Texture(Recursos.FONDOJUEGO2);
+				fondo1 = new Texture(Recursos.FONDOJUEGO2);
 			}
 			if (!color) {
-				fondo = new Texture(Recursos.FONDOJUEGO);
+				fondo1 = new Texture(Recursos.FONDOJUEGO);
 			}
 		}
 	}

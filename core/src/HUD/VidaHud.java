@@ -43,10 +43,10 @@ public class VidaHud implements HUD{
 		stage = new Stage(vw);
 		tabla = new Table();
 		if(j.getTipo() == Controles.JUGADOR1 ) {
-			tabla.setPosition(65, 728);
+			tabla.setPosition(stage.getWidth()/stage.getWidth()+50, stage.getHeight()-50);;
 		}
 		if(j.getTipo() == Controles.JUGADOR2) {
-			tabla.setPosition(1100, 728);
+			tabla.setPosition(stage.getWidth()-100, stage.getHeight()-50);
 		}
 		contenedor = new Table();
 		etiqueta = new Label(""+j.getVida(), estiloFuente);

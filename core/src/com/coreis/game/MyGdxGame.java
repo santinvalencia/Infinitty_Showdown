@@ -13,10 +13,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 public class MyGdxGame extends Game {
 	SpriteBatch batch;
 	private FitViewport viewport;
-	private ScreenViewport vw;
     private Camera camera;
-    private Stage stage;
-    private Table table;
+    private int ancho,alto;
 	public MyGdxGame() { 
 		super(); 
 	}
@@ -26,10 +24,13 @@ public class MyGdxGame extends Game {
 		batch = Render.batch;
 		this.setScreen(new Splash_Screen(this));
 		camera = new PerspectiveCamera();
-		vw = new ScreenViewport();
         viewport = new FitViewport(1152, 768, camera);
 	}
 	
+
+	public FitViewport getViewport() {
+		return viewport;
+	}
 
 	public void render () {
 		super.render();
