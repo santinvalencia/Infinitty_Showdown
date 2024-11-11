@@ -1,5 +1,6 @@
 package com.coreis.game.pantallas;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
@@ -26,12 +27,11 @@ public class Juego implements Screen{
 	NombreHud NombreCarlitos;
 	NombreHud NombreJairo;
 	public static final float SPEED = 120;
-	Posicion posCarlitos= new Posicion (0, 0);
-	Posicion posJairo = new Posicion(500, 0);
 	Jugador Carlitos;
 	Jugador Jairo;
 	Texture fondo1;
 	boolean color=true;
+	 Sound golpear1;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
@@ -72,12 +72,9 @@ public class Juego implements Screen{
 	@Override
 	public void render(float delta) {
 		Render.limpiarPantalla();
+		quitarVida(Keys.F);
 		Jairo.MovimientoJ2();
 		Carlitos.MovimientoJ1();
-		mostrarVida(Carlitos);
-		mostrarVida(Jairo);
-		quitarVida(Carlitos, Keys.H);
-		quitarVida(Jairo, Keys.G);
 		CaidaLibre(Jairo);
 		CaidaLibre(Carlitos);
 		VidaJairo.refrescarTexto(Jairo);
@@ -99,11 +96,21 @@ public class Juego implements Screen{
 			
 			
 		batch.begin();
+		
 		VidaJairo.dibujar();
 		VidaCarlitos.dibujar();
 		NombreJairo.dibujar();
 		NombreCarlitos.dibujar();
+		
 		batch.end();
+		
+	}
+	public void quitarVida(int a) {
+		if(Gdx.input.isKeyJustPressed(a)) {
+			golpear1 = Gdx.audio.newSound(Gdx.files.internal("sonidos/GOLPEAR1.ogg"));
+			golpear1.setVolume(0, 55);
+			golpear1.play();
+		}
 		
 	}
 	public void quitarVida(Jugador j, int a) {
@@ -113,7 +120,7 @@ public class Juego implements Screen{
 		
 	}
 	private void cambiosMapa() {
-		if (Gdx.input.isKeyJustPressed(Keys.K)) {
+		if (Gdx.input.isKeyJustPressed(Keys.M)) {
 			color = !color;
 			if(color) {
 				fondo1 = new Texture(Recursos.FONDOJUEGO2);
@@ -149,12 +156,5 @@ public class Juego implements Screen{
 		batch.dispose();
 	}
 	
-public void mostrarVida(Jugador j) {
-		
-		if(Gdx.input.isKeyJustPressed(Keys.U)) {
-			
-			System.out.println("Vida de "+ j.getNombre() + ": " + j.getVida());
-			
-		}
-	}
+	
 }

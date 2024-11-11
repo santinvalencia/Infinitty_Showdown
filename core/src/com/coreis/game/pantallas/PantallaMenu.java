@@ -26,24 +26,13 @@ import com.coreis.game.utiles.Render;
 		final MyGdxGame game;
 	    private SpriteBatch batch;
 	    private Stage stage;
-	    private Actor botonJugar, fondoActor;
 	    private Texture t;
 	    private Texture fondo;
 	    private Skin skin;
 	    Texture fondo1;
-	    /*
-	    Texture BotonJugarInactivo;
-	    Texture BotonJugarActivo;
-	    Texture BotonOpcionesInactivo;
-	    Texture BotonOpcionesActivo;
-	    Texture BotonCreditosInactivo;
-	    Texture BotonCreditosActivo;
-	    */
 	    public PantallaMenu(MyGdxGame game) {
 	        this.game= game;
 	        batch = Render.batch;
-	        // BotonJugarInactivo = new Texture("BotonJugarInactivo.png");
-	        // BotonJugarActivo = new Texture("BotonJugarActivo.png");
 	        
 	        
 	        //////////////////////////////
@@ -51,20 +40,17 @@ import com.coreis.game.utiles.Render;
 	        skin = new Skin(Gdx.files.internal("makigas/uiskin.json"));
 	        TextButton jugar = new TextButton("Jugar", skin);
 	        TextButton opciones = new TextButton ("Opciones", skin);
+	        TextButton creditos = new TextButton ("Creditos", skin);
 		    Table tabla= new Table ();
 	        stage.addActor(tabla);
 	        tabla.setFillParent(true);
-	        Label nombre= new Label("Nombre", skin);
-	        TextField fieldNombre = new TextField("", skin);
-	        //tabla.add(nombre);
-	        //tabla.add(fieldNombre);
 	        tabla.row();
 	        
-	        botonJugar = new HUD.BotonJugar();
-	        botonJugar.setPosition(50, 250);
 	        jugar.setPosition(50,400);
 	        opciones.setPosition(50, 300);
-	        //stage.addActor(botonJugar);
+	        creditos.setPosition(50, 200);
+	        
+	        stage.addActor(creditos);
 	        stage.addActor(jugar);
 	        stage.addActor(opciones);
 	        Gdx.input.setInputProcessor(stage);
@@ -77,13 +63,12 @@ import com.coreis.game.utiles.Render;
 	        	}
 	        	@Override
 	        	public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-	        		// TODO Auto-generated method stub
 	        		super.touchUp(event, x, y, pointer, button);
 	        		game.setScreen(new Juego(game));
 	        	}
 	        });
 	        
-	        //////////////////////////////\
+	        //////////////////////////////
 	        
 	    }
 	   @Override
@@ -100,8 +85,6 @@ import com.coreis.game.utiles.Render;
 	    	MoverBotonJugar();
 	        batch.begin();
 	        batch.draw(fondo,0,0, 1152, 768);
-	        //batch.draw(BotonJugarInactivo, 100, 120);
-	        //batch.draw(BotonJugarActivo, 100, 100);
 	        
 	        batch.end();
 	        
