@@ -21,13 +21,12 @@ import com.coreis.game.utiles.Render;
 	    
 	    public class immagenCarga{
 	    	
-	    	public static final String loadingScreen = "assets/logoCVF.PNG";
+	    	public static final String loadingScreen = "assets/logoCVF.png";
 	   
 	    }
 	    public Splash_Screen(MyGdxGame game) {
 	        this.game = game;
 	        batch = new SpriteBatch();
-	        t = new Texture("logoCVF.PNG");
 	    }
 	   @Override
 	    public void show() { 
@@ -44,7 +43,7 @@ import com.coreis.game.utiles.Render;
 	    	}
 	    	Render.limpiarPantalla();
 	    	procesarFade();
-	        Render.batch.begin();
+	        batch.begin();
 	        fondo.dibujar();
 	        batch.end();
 	        

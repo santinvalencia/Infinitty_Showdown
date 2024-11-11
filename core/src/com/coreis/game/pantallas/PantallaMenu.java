@@ -56,8 +56,8 @@ import com.coreis.game.utiles.Render;
 	        tabla.setFillParent(true);
 	        Label nombre= new Label("Nombre", skin);
 	        TextField fieldNombre = new TextField("", skin);
-	        tabla.add(nombre);
-	        tabla.add(fieldNombre);
+	        //tabla.add(nombre);
+	        //tabla.add(fieldNombre);
 	        tabla.row();
 	        
 	        botonJugar = new HUD.BotonJugar();
@@ -96,7 +96,6 @@ import com.coreis.game.utiles.Render;
 	   }
 	    @Override
 	    public void render(float delta) {
-	    	CambioJuego();
 	    	Render.limpiarPantalla();
 	    	MoverBotonJugar();
 	        batch.begin();
@@ -118,11 +117,6 @@ import com.coreis.game.utiles.Render;
 				
 			}
 			
-		}
-		private void CambioJuego() {
-	    	if(Gdx.input.isKeyPressed(Keys.ENTER)) {
-	    		game.setScreen(new Juego(game));
-	    	}
 		}
 		@Override
 	    public void hide() { }
