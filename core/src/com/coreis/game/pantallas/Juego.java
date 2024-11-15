@@ -30,12 +30,10 @@ public class Juego implements Screen{
 	Jugador Carlitos;
 	Jugador Jairo;
 	Texture fondo1;
-	boolean color=true;
 	 Sound golpear1;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
-        batch = new SpriteBatch();
     }
 	@Override
 	public void show() {
@@ -59,6 +57,7 @@ public class Juego implements Screen{
 		VidaCarlitos = new VidaHud(Carlitos);
 		NombreJairo = new NombreHud(Jairo);
 		NombreCarlitos = new NombreHud(Carlitos);
+		fondo1 = new Texture(Recursos.FONDOJUEGO);
 	}
 	
 	public void CaidaLibre(Jugador j) {
@@ -84,7 +83,6 @@ public class Juego implements Screen{
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 			game.setScreen(new PantallaMenu(game));
 		}
-		cambiosMapa();
 		
 		batch.begin();
 		batch.draw(fondo1, 0, 0);
@@ -118,17 +116,6 @@ public class Juego implements Screen{
 			j.setVida(j.getVida()-1);
 		}
 		
-	}
-	private void cambiosMapa() {
-		if (Gdx.input.isKeyJustPressed(Keys.M)) {
-			color = !color;
-			if(color) {
-				fondo1 = new Texture(Recursos.FONDOJUEGO2);
-			}
-			if (!color) {
-				fondo1 = new Texture(Recursos.FONDOJUEGO);
-			}
-		}
 	}
 	@Override
 	public void resize(int width, int height) {
