@@ -59,19 +59,10 @@ public class Juego implements Screen{
 		NombreCarlitos = new NombreHud(Carlitos);
 		fondo1 = new Texture(Recursos.FONDOJUEGO);
 	}
-	
-	public void CaidaLibre(Jugador j) {
-		if(j.getPosY()<0) {
-			j.setPosY(0);
-		}
-		if(j.getPosY()>0) {
-		j.setPosY(j.getPosY()-2);
-		}
-	}
 	@Override
 	public void render(float delta) {
 		Render.limpiarPantalla();
-		quitarVida(Keys.F);
+		sonidoGolpe(Keys.F);
 		Jairo.MovimientoJ2();
 		Carlitos.MovimientoJ1();
 		CaidaLibre(Jairo);
@@ -103,13 +94,21 @@ public class Juego implements Screen{
 		batch.end();
 		
 	}
-	public void quitarVida(int a) {
+	public void sonidoGolpe(int a) {
 		if(Gdx.input.isKeyJustPressed(a)) {
 			golpear1 = Gdx.audio.newSound(Gdx.files.internal("sonidos/GOLPEAR1.ogg"));
 			golpear1.setVolume(0, 55);
 			golpear1.play();
 		}
 		
+	}
+	public void CaidaLibre(Jugador j) {
+		if(j.getPosY()<0) {
+			j.setPosY(0);
+		}
+		if(j.getPosY()>0) {
+		j.setPosY(j.getPosY()-2);
+		}
 	}
 	public void quitarVida(Jugador j, int a) {
 		if(Gdx.input.isKeyJustPressed(a)) {
