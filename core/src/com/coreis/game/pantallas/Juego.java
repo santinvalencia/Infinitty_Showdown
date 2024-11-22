@@ -1,11 +1,13 @@
 package com.coreis.game.pantallas;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.coreis.game.MyGdxGame;
+import com.coreis.game.clases.Jugador;
 import com.coreis.game.utiles.Recursos;
 import com.coreis.game.utiles.Render;
 
@@ -13,14 +15,11 @@ import ENUMS.Controles;
 import ENUMS.Velocidad;
 import HUD.NombreHud;
 import HUD.VidaHud;
-
-import com.coreis.game.MyGdxGame;
-import com.coreis.game.clases.Jugador;
-import com.coreis.game.clases.Posicion;
-import com.coreis.game.elementos.ImagenF;
-import Interfaces.HUD;
+import mundo.GameMap;
+import mundo.TiledGameMap;
 public class Juego implements Screen{
-	SpriteBatch batch;
+	OrthographicCamera cam;
+	SpriteBatch batch;	
 	final MyGdxGame game;
 	VidaHud VidaJairo;
 	VidaHud VidaCarlitos;
@@ -30,15 +29,22 @@ public class Juego implements Screen{
 	Jugador Carlitos;
 	Jugador Jairo;
 	Texture fondo1;
-	 Sound golpear1;
+	Sound golpear1;
+	GameMap gameMap;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
     }
 	@Override
 	public void show() {
-		// TODO Auto-generated method++
 		batch = Render.batch;
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
+		gameMap = new TiledGameMap();
+		cam= new OrthographicCamera();
+		cam.setToOrtho(false, w, h);
+		cam.update();
+		
 		
 		
 		fondo1 = new Texture(Recursos.FONDOJUEGO2);
@@ -58,6 +64,7 @@ public class Juego implements Screen{
 		NombreJairo = new NombreHud(Jairo);
 		NombreCarlitos = new NombreHud(Carlitos);
 		fondo1 = new Texture(Recursos.FONDOJUEGO);
+		
 	}
 	@Override
 	public void render(float delta) {
@@ -82,8 +89,14 @@ public class Juego implements Screen{
 			
 		batch.end();
 			
-			
-			
+		
+		
+		cam.update();
+		gameMap.update(Gdx.graphics.getDeltaTime());
+		gameMap.render(cam);
+		
+		
+		
 		batch.begin();
 		
 		VidaJairo.dibujar();
@@ -140,6 +153,7 @@ public class Juego implements Screen{
 	public void dispose() {
 		// TODO Auto-generated method stub
 		batch.dispose();
+		gameMap.dispose();
 	}
 	
 	

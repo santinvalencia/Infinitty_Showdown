@@ -47,8 +47,11 @@ import com.coreis.game.utiles.Render;
 	        tabla.row();
 	        
 	        jugar.setPosition(50,400);
+	        jugar.setSize(100, 50);
 	        opciones.setPosition(50, 300);
+	        opciones.setSize(100, 50);
 	        creditos.setPosition(50, 200);
+	        creditos.setSize(100, 50);
 	        
 	        stage.addActor(creditos);
 	        stage.addActor(jugar);
