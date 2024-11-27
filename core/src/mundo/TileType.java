@@ -3,12 +3,14 @@ package mundo;
 import java.util.HashMap;
 
 public enum TileType {
-	TIERRA(1, true, "Tierra"),
-	PIEDRA(2, true, "Piedra"),
+	CESPED(1, true, "Cesped"),
+	TIERRA(2, true, "Tierra"),
 	CIELO(3, false, "Cielo"),
-	NUBE(4, false, "Nube"),;
+	LAVA(4, false, "Lava"),
+	NUBE(5, true, "Nube"),
+	PIEDRA(6, false, "Piedra"),;
 	
-	public static final int TILE_SIZE = 16;
+	public static final int TILE_SIZE = 32;
 	
 	private int id;
 	private boolean colisionable;
@@ -18,7 +20,7 @@ public enum TileType {
 	private TileType (int id, boolean colisionable, String name) {
 		this(id, colisionable, name, 0);
 	}
-
+	
 	private TileType(int id, boolean colisionable, String name, float damage) {
 		this.id = id;
 		this.colisionable = colisionable;
@@ -42,16 +44,17 @@ public enum TileType {
 		return damage;
 	}
 	
-	private static HashMap<Integer, TileType> tilesMap;
+	private static HashMap<Integer, TileType> tileMap;
 	
 	
 	static {
+		tileMap = new HashMap<Integer, TileType>();
 		for (TileType tileType : TileType.values()) {
-			tilesMap.put(tileType.getId(), tileType);
+			tileMap.put(tileType.getId(), tileType);
 		}
 	}
 	
 	public static TileType getTypeById (int id) {
-		return tilesMap.get(id);
+		return tileMap.get(id);
 	}
 }

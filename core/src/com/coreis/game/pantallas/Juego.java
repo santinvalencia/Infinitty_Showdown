@@ -6,6 +6,12 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.coreis.game.MyGdxGame;
 import com.coreis.game.clases.Jugador;
 import com.coreis.game.utiles.Recursos;
@@ -16,6 +22,7 @@ import ENUMS.Velocidad;
 import HUD.NombreHud;
 import HUD.VidaHud;
 import mundo.GameMap;
+import mundo.TileType;
 import mundo.TiledGameMap;
 public class Juego implements Screen{
 	OrthographicCamera cam;
@@ -31,6 +38,7 @@ public class Juego implements Screen{
 	Texture fondo1;
 	Sound golpear1;
 	GameMap gameMap;
+	Stage stage;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
@@ -44,6 +52,8 @@ public class Juego implements Screen{
 		cam= new OrthographicCamera();
 		cam.setToOrtho(false, w, h);
 		cam.update();
+		stage = new Stage();
+		crearBotonMenu();
 		
 		
 		
@@ -66,6 +76,7 @@ public class Juego implements Screen{
 		fondo1 = new Texture(Recursos.FONDOJUEGO);
 		
 	}
+	
 	@Override
 	public void render(float delta) {
 		Render.limpiarPantalla();
@@ -78,9 +89,8 @@ public class Juego implements Screen{
 		VidaCarlitos.refrescarTexto(Carlitos);
 		NombreJairo.refrescarTexto(Jairo);
 		NombreCarlitos.refrescarTexto(Carlitos);
-		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
-			game.setScreen(new PantallaMenu(game));
-		}
+//		detectarBloque();
+		
 		
 		batch.begin();
 		batch.draw(fondo1, 0, 0);
@@ -88,7 +98,8 @@ public class Juego implements Screen{
 		batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
 			
 		batch.end();
-			
+		stage.draw();
+        stage.act(delta);
 		
 		
 		cam.update();
@@ -107,6 +118,7 @@ public class Juego implements Screen{
 		batch.end();
 		
 	}
+	
 	public void sonidoGolpe(int a) {
 		if(Gdx.input.isKeyJustPressed(a)) {
 			golpear1 = Gdx.audio.newSound(Gdx.files.internal("sonidos/GOLPEAR1.ogg"));
@@ -156,5 +168,41 @@ public class Juego implements Screen{
 		gameMap.dispose();
 	}
 	
-	
+private void crearBotonMenu() {
+		
+		Skin skin = new Skin(Gdx.files.internal("makigas/uiskin.json"));
+		TextButton menu = new TextButton ("Menu", skin);
+		menu.setPosition(520,690);
+		menu.setSize(80, 50);
+        stage.addActor(menu);
+        Gdx.input.setInputProcessor(stage);
+        stage.setDebugAll(false);
+        menu.addCaptureListener(new InputListener() {
+        	@Override
+        	public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        		// TODO Auto-generated method stub
+        		return true;
+        	}
+        	@Override
+        	public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+        		super.touchUp(event, x, y, pointer, button);
+        		game.setScreen(new PantallaMenu(game));
+        	}
+        });
+		
+	}
+
+private void detectarBloque() {
+	if (Gdx.input.isTouched()) {
+		cam.translate(-Gdx.input.getDeltaX(), Gdx.input.getDeltaY());
+		cam.update();
+	}
+	if (Gdx.input.justTouched()) {
+		Vector3 pos = cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+		TileType type = gameMap.getTileTypeByLocation(1, pos.x, pos.y);
+		
+		if (type != null) {
+			System.out.println("clickeaste en el tile con id: "+ type.getId()+ " llamado:"+ type.getName());
+		}
+}
 }

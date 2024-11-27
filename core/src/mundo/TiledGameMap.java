@@ -3,6 +3,9 @@ package mundo;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
@@ -15,8 +18,8 @@ public class TiledGameMap extends GameMap{
 	
 	
 	public TiledGameMap() {
-		tiledMap = new TmxMapLoader().load("mapa/mapa.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+        tiledMap = new TmxMapLoader().load("mapa/mapa.tmx");
+        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 	}
 
 	@Override
@@ -27,7 +30,6 @@ public class TiledGameMap extends GameMap{
 
 	@Override
 	public void update(float delta) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -42,26 +44,34 @@ public class TiledGameMap extends GameMap{
 	}
 
 	@Override
-	public TileType getTileTypeByCoordinate(int layer, float col, float row) {
+	public TileType getTileTypeByCoordinate(int layer, int x, int y) {
+		Cell cell = ((TiledMapTileLayer) tiledMap.getLayers().get(layer)).getCell(x, y);
+    	
+    	if (cell != null) {
+    		TiledMapTile tile = cell.getTile();
+    		
+    		if (tile != null) {
+    			int id = tile.getId();
+    			TileType type = TileType.getTypeById(id);
+    			return type;
+    		}
+    	}
 		return null;
 	}
 
 	@Override
 	public int getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getWidth();
 	}
-
 	@Override
 	public int getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getHeight();
 	}
 
 	@Override
 	public int getLayers() {
-		// TODO Auto-generated method stub
-		return 0;
+		return tiledMap.getLayers().getCount();
 	}
+
 
 }
