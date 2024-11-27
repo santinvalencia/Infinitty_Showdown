@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(120);
 		config.setTitle("Infinitty Showdown");
 		config.setWindowedMode(1152, 768); //
-        config.setResizable(false); // 
+        config.setResizable(true); // 
         config.setWindowIcon("logoIS.png");
 		new Lwjgl3Application(new MyGdxGame(), config);
 		

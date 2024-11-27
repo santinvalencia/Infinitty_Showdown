@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 public enum TileType {
 	TIERRA(1, true, "Tierra"),
-	PIEDRA(1, true, "Piedra"),
-	CIELO(1, false, "Cielo"),
-	NUBE(1, false, "Nube"),;
+	PIEDRA(2, true, "Piedra"),
+	CIELO(3, false, "Cielo"),
+	NUBE(4, false, "Nube"),;
 	
 	public static final int TILE_SIZE = 16;
 	

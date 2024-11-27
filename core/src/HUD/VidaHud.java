@@ -27,7 +27,7 @@ public class VidaHud implements HUD{
 	    crearActores(j); // Después de crear las fuentes
 	    poblarStage(j);
 	    refrescarTexto(j);
-	    stage.setDebugAll(true);
+	    stage.setDebugAll(false);
 	}
 
 	@Override
