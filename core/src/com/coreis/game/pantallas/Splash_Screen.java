@@ -37,11 +37,10 @@ import com.coreis.game.utiles.Render;
 	   }
 	    @Override
 	    public void render(float delta) {
-	    	Apurarse();
+	    	
 	    	if (termina) {
 	    		game.setScreen(new PantallaMenu(game));
 	    	}
-	    	
 	    	Render.limpiarPantalla();
 	    	procesarFade();
 	        batch.begin();
@@ -99,10 +98,4 @@ import com.coreis.game.utiles.Render;
 	        batch.dispose();
 	        
 	    }
-	    private void Apurarse() {
-			if (Gdx.input.isKeyPressed(Keys.Q)) {
-				game.setScreen(new PantallaMenu(game));
-			}
-			
-		}
 	}

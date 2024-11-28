@@ -4,9 +4,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import mundo.TileType;
@@ -20,8 +17,8 @@ public class TiledGameMap extends GameMap{
 	
 	
 	public TiledGameMap() {
-        tiledMap = new TmxMapLoader().load("mapa/mapa.tmx");
-        tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		tiledMap = new TmxMapLoader().load("mapa/mapa.tmx");
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 	}
 
 	@Override
@@ -40,7 +37,12 @@ public class TiledGameMap extends GameMap{
 
 	@Override
 	public void update(float delta) {
+<<<<<<< HEAD
 //		super.update(delta);
+=======
+		// TODO Auto-generated method stub
+		
+>>>>>>> parent of 7b4f3a4 (commit)
 	}
 
 	@Override
@@ -57,6 +59,7 @@ public class TiledGameMap extends GameMap{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public TileType getTileTypeByCoordinate(int layer, int col, int row) {
 		Cell cell = ((TiledMapTileLayer) tiledMap.getLayers().get(layer)).getCell(col, row);
     	
@@ -69,6 +72,9 @@ public class TiledGameMap extends GameMap{
     			return type;
     		}
     	}
+=======
+	public TileType getTileTypeByCoordinate(int layer, float col, float row) {
+>>>>>>> parent of 7b4f3a4 (commit)
 		return null;
 	}
 	
@@ -94,17 +100,20 @@ public class TiledGameMap extends GameMap{
 
 	@Override
 	public int getWidth() {
-		return ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getWidth();
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
 	@Override
 	public int getHeight() {
-		return ((TiledMapTileLayer) tiledMap.getLayers().get(0)).getHeight();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int getLayers() {
-		return tiledMap.getLayers().getCount();
+		// TODO Auto-generated method stub
+		return 0;
 	}
-
 
 }

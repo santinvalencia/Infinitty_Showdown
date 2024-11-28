@@ -43,6 +43,7 @@ public abstract class GameMap {
 	 * @return
 	 */
 	public abstract TileType getTileTypeByLocation(int layer, float x, float y);
+<<<<<<< HEAD
 	
 	public boolean doesRectCollideWithMap(float x, float y, int width, int height) {
 		if (x < 0 || y < 0 || x + width > getPixelWidth() || y + height > getPixelHeight())
@@ -59,10 +60,22 @@ public abstract class GameMap {
 		}
 		return false;
 	}
+=======
+	/**
+	 * 
+	 * @param layer
+	 * @param col
+	 * @param row
+	 * @return
+	 */
+	public abstract TileType getTileTypeByCoordinate(int layer, float col, float row);
+	
+>>>>>>> parent of 7b4f3a4 (commit)
 	
 	public abstract int getWidth(); 
 	public abstract int getHeight();
 	public abstract int getLayers();
+<<<<<<< HEAD
 	
 	public abstract TileType getTileTypeByCoordinate(int layer, int col, int row) ;
 	
@@ -73,4 +86,7 @@ public abstract class GameMap {
 	public int getPixelHeight() {
 		return this.getHeight() * TileType.TILE_SIZE;
 	}
+=======
+
+>>>>>>> parent of 7b4f3a4 (commit)
 }

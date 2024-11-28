@@ -41,7 +41,6 @@ import com.coreis.game.utiles.Render;
 	        TextButton jugar = new TextButton("Jugar", skin);
 	        TextButton opciones = new TextButton ("Opciones", skin);
 	        TextButton creditos = new TextButton ("Creditos", skin);
-	        
 		    Table tabla= new Table ();
 	        stage.addActor(tabla);
 	        tabla.setFillParent(true);
@@ -86,6 +85,7 @@ import com.coreis.game.utiles.Render;
 	    @Override
 	    public void render(float delta) {
 	    	Render.limpiarPantalla();
+	    	MoverBotonJugar();
 	        batch.begin();
 	        batch.draw(fondo,0,0, 1152, 768);
 	        
@@ -98,7 +98,12 @@ import com.coreis.game.utiles.Render;
 	    
 	    
 	 
-	    
+	    private void MoverBotonJugar() {
+			if (Gdx.input.isKeyPressed(Keys.Q)) {
+				
+			}
+			
+		}
 		@Override
 	    public void hide() { }
 	 
