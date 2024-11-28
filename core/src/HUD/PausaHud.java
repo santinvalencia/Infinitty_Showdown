@@ -24,7 +24,7 @@ public class PausaHud implements HUD{
 	private Table tabla, contenedor;
 	private Label etiqueta;
 	private Label botonPausa;
-	private Label.LabelStyle estiloFuente, estiloPeligro, fuenteAdvertencia;
+	private Label.LabelStyle estiloFuente, estiloPeligro;
 	
 
 	public PausaHud(Jugador j) {

@@ -19,7 +19,7 @@ public class VidaHud implements HUD{
 	private ScreenViewport vw;
 	private Table tabla, contenedor;
 	private Label etiqueta;
-	private Label.LabelStyle estiloFuente, estiloPeligro, fuenteAdvertencia;
+	private Label.LabelStyle estiloFuente, fuenteAdvertencia;
 	
 
 	public VidaHud(Jugador j) {

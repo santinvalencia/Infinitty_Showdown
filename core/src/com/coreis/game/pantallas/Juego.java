@@ -21,11 +21,12 @@ import ENUMS.Controles;
 import ENUMS.Velocidad;
 import HUD.NombreHud;
 import HUD.VidaHud;
+import entities.Player;
 import mundo.GameMap;
 import mundo.TileType;
 import mundo.TiledGameMap;
 public class Juego implements Screen{
-	OrthographicCamera cam;
+	OrthographicCamera camera;
 	SpriteBatch batch;	
 	final MyGdxGame game;
 	VidaHud VidaJairo;
@@ -39,6 +40,7 @@ public class Juego implements Screen{
 	Sound golpear1;
 	GameMap gameMap;
 	Stage stage;
+	Player p;
 	
 	public Juego(MyGdxGame game) {
         this.game= game;
@@ -48,10 +50,11 @@ public class Juego implements Screen{
 		batch = Render.batch;
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
+		
+		camera= new OrthographicCamera();
+		camera.setToOrtho(false, w, h);
+		camera.update();
 		gameMap = new TiledGameMap();
-		cam= new OrthographicCamera();
-		cam.setToOrtho(false, w, h);
-		cam.update();
 		stage = new Stage();
 		crearBotonMenu();
 		
@@ -74,7 +77,7 @@ public class Juego implements Screen{
 		NombreJairo = new NombreHud(Jairo);
 		NombreCarlitos = new NombreHud(Carlitos);
 		fondo1 = new Texture(Recursos.FONDOJUEGO);
-		
+		p = new Player(50, 50, gameMap);
 	}
 	
 	@Override
@@ -89,22 +92,22 @@ public class Juego implements Screen{
 		VidaCarlitos.refrescarTexto(Carlitos);
 		NombreJairo.refrescarTexto(Jairo);
 		NombreCarlitos.refrescarTexto(Carlitos);
-//		detectarBloque();
+		detectarBloque();
 		
 		
 		batch.begin();
 		batch.draw(fondo1, 0, 0);
-		batch.draw(Jairo.getImg(), Jairo.getPosX(),Jairo.getPosY());
-		batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
-			
+		//batch.draw(Jairo.getImg(), Jairo.getPosX(),Jairo.getPosY());
+		//batch.draw(Carlitos.getImg(), Carlitos.getPosX(),Carlitos.getPosY());
+		p.render(batch);
 		batch.end();
 		stage.draw();
         stage.act(delta);
 		
 		
-		cam.update();
+        camera.update();
 		gameMap.update(Gdx.graphics.getDeltaTime());
-		gameMap.render(cam);
+		gameMap.render(camera, batch);
 		
 		
 		
@@ -168,7 +171,7 @@ public class Juego implements Screen{
 		gameMap.dispose();
 	}
 	
-private void crearBotonMenu() {
+	private void crearBotonMenu() {
 		
 		Skin skin = new Skin(Gdx.files.internal("makigas/uiskin.json"));
 		TextButton menu = new TextButton ("Menu", skin);
@@ -192,17 +195,20 @@ private void crearBotonMenu() {
 		
 	}
 
+	
 private void detectarBloque() {
 	if (Gdx.input.isTouched()) {
-		cam.translate(-Gdx.input.getDeltaX(), Gdx.input.getDeltaY());
-		cam.update();
+		camera.translate(-Gdx.input.getDeltaX(), Gdx.input.getDeltaY());
+		camera.update();
 	}
 	if (Gdx.input.justTouched()) {
-		Vector3 pos = cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+		Vector3 pos = camera.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
 		TileType type = gameMap.getTileTypeByLocation(1, pos.x, pos.y);
 		
 		if (type != null) {
 			System.out.println("clickeaste en el tile con id: "+ type.getId()+ " llamado:"+ type.getName());
 		}
-}
+	}
+	}	
+
 }
